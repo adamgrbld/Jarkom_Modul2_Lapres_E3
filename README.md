@@ -161,7 +161,20 @@ Melakukan semua konfigurasi pada Modul UML
   * nano semerue03.pw.conf
 
     ![8a](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_8a.png)
+    ![8b](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_8b.png)
+    ![8c](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_8c.png)
+    ![8d](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_8d.png)
   * service apache2 restart
+  * a2ensite semerue03.pw.conf
+  * cd /var/www
+  * mkdir semerue03.pw
+  * wget
+  * unzip
+  * mv semeru.pw /var/www/semerue03.pw
+  * mv penanjakan.semeru.pw /var/www/semerue03.pw
+  * mv semeru /var/www/naik.gunung.semerue03.pw
+  * service apache2 restart
+  * a2ensite semerue03.pw.conf
   
 - BROWSER
   * masukkan *semerue03.pw*
@@ -179,23 +192,26 @@ Melakukan semua konfigurasi pada Modul UML
   * nano /etc/apache/sites-available/semerue03.pw.conf
     
     ![9b](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_9b.png)
+  * a2ensite semerue03.pw.conf
+  * service apache2 restart
     
 - BROWSER
   * masukkan *semeruyyy.pw/home*
     
-    ![9fin]()
+    ![9fin](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_9fin.png)
 
 **10. Web http://penanjakan.semeruyyy.pw akan digunakan untuk menyimpan assets file yang memiliki DocumentRoot pada /var/www/penanjakan.semeruyyy.pw dan memiliki struktur folder**
 
 - PROBOLINGGO
-  * download and unzip di /var/www/
+  * download dan unzip di /var/www/
   * service apache2 restart
+  * cd /var/www
   * cat penanjakan.semerue03.pw/
   * ls penanjakan.semerue03.pw/
   * cp 000-default.conf penanjakan.semerue03.pw.conf
   
 - BROWSER
-  * masukkan *penanjakan.semerue03.pw*
+  * masukkan *penanjakan.semerue03.pw/public*
     
     ![10fin](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_10fin.png)
 
@@ -207,9 +223,11 @@ Melakukan semua konfigurasi pada Modul UML
     ![11a](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_11a.png)
 
 - BROWSER
-  * masukkan *penanjakan.semerue03.pw*
+  * masukkan *penanjakan.semerue03.pw/css*
   
-    ![11fin]()
+    ``` css dapat diganti dengan nama file lain di directory public ```
+  
+    ![11fin](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_11fin.png)
 
 **12. Untuk mengatasi HTTP Error code 404, disediakan file 404.html pada folder /errors untuk mengganti error default 404 dari Apache**
 
@@ -219,7 +237,9 @@ Melakukan semua konfigurasi pada Modul UML
     ![12a](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_12a.png)
 
 - BROWSER
-  * masukkan *penanjakan.semerue03.pw*
+  * masukkan *penanjakan.semerue03.pw/public/asdf*
+  
+    ``` asdf tidak terdapat di directory public, sehingga menunjukkan error ```
   
     ![12fin](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_12fin.png)
 
@@ -237,8 +257,55 @@ Melakukan semua konfigurasi pada Modul UML
 
 **14. Web http://naik.gunung.semeruyyy.pw sudah bisa diakses hanya dengan menggunakan port 8888. DocumentRoot web berada pada /var/www/naik.gunung.semeruyyy.pw**
 
+- PROBOLINGGO
+  * download dan unzip di /var/www
+  * nano /etc/apache2/sites-available/naik.gunung.semerue03.pw.conf
+  
+    ``` configurasi jadi satu di no 15 ```
+
 **15. Membuat web http://naik.gunung.semeruyyy.pw agar diberi autentikasi password dengan username “semeru” dan password “kuynaikgunung” supaya aman dan tidak sembarang orang bisa mengaksesnya**
+
+- PROBOLINGGO
+  * htpasswd /etc/apache2/.htpasswd semeru
+  * nano /etc/apache2/sites-available/naik.gunung.semerue03.pw.conf
+  
+    ![15a](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_15a.png)
+
+- BROWSER
+  * masukkan *naik.gunung.semerue03.pw:8888*
+  
+    ![15fin](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_15fin.png)
 
 **16. Setiap mengunjungi IP PROBOLINGGO akan dialihkan secara otomatis ke http://semeruyyy.pw**
 
+- PROBOLINGGO
+  * cd /etc/apache2/sites-available/
+  * nano 000-default.conf
+  
+    ![16a](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_16a.png)
+    
+- BROWSER
+  * masukkan *10.151.71.36*, dan berikut merupakan hasil dari IP yang dimasukkan
+  
+    ``` 10.151.71.36 merupakan IP PROBOLINGGO ```
+  
+    ![16fin](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_16fin.png)
+
 **17. Karena pengunjung pada /var/www/penanjakan.semeruyyy.pw/public/images sangat banyak maka semua request gambar yang memiliki substring “semeru” akan diarahkan menuju semeru.jpg**
+
+- PROBOLINGGO
+  * nano .htaccess pada /var/www/penanjakan.semerue03.pw
+    
+    ![17a](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_17a.png)
+  * nano /etc/apache2/sites-available/penanjakan.semerue03.pw.conf
+  
+    ![17b](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_17b.png)
+    
+- BROWSER
+  * masukkan *penanjakan.semerue03.pw/public/images/[namafile].jpg*
+  
+    ``` namafile dapat diisi apa saja dengan catatan mengandung substring semeru ```
+    
+    berikut hasilnya, semua akan diarahkan ke *semeru.jpg*
+    
+     ![17fin](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_17fin.png)
