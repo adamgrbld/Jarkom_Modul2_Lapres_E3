@@ -306,6 +306,6 @@ Melakukan semua konfigurasi pada Modul UML
   
     ``` namafile dapat diisi apa saja dengan catatan mengandung substring semeru ```
     
-    berikut hasilnya, semua akan diarahkan ke *semeru.jpg*
+    berikut hasilnya, diarahkan ke *semeru.jpg*
     
      ![17fin](https://github.com/adamgrbld/Jarkom_Modul2_Lapres_E3/blob/main/image/m2_17fin.png)
